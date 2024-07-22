@@ -1,32 +1,28 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public abstract class HealthBar : MonoBehaviour
 {
-    [SerializeField] private Slider _slider;
+    [SerializeField] protected Player _player;
 
-    private float _smoothSpeed = 30f;
-    private float _targetHealth;
-
-    private void Start()
+    private void OnEnable()
     {
-        _targetHealth = _slider.value;
+        if (_player != null)
+        {
+            _player.OnMaxHealthChanged += DrawMaxHealth;
+            _player.OnHealthChanged += DrawHealth;
+        }
     }
 
-    private void FixedUpdate()
+    private void OnDisable()
     {
-        _slider.value = _slider.value = Mathf.MoveTowards(_slider.value, _targetHealth, _smoothSpeed * Time.deltaTime);
+        if (_player != null)
+        {
+            _player.OnMaxHealthChanged -= DrawMaxHealth;
+            _player.OnHealthChanged -= DrawHealth;
+        }
     }
 
-    public void DrawMaxHealth(float health)
-    {
-        _slider.maxValue = health;
-        _slider.value = health;
-        _targetHealth = health;
-    }
+    public virtual void DrawMaxHealth(int health) { }
 
-    public void DrawHealth(float health)
-    {
-        _targetHealth = health;
-    }
+    public virtual void DrawHealth(int health) { }
 }
