@@ -2,27 +2,23 @@ using UnityEngine;
 
 public abstract class HealthBar : MonoBehaviour
 {
-    [SerializeField] protected Player _player;
+    [SerializeField] protected Health _health;
 
     private void OnEnable()
     {
-        if (_player != null)
+        if (_health != null)
         {
-            _player.OnMaxHealthChanged += DrawMaxHealth;
-            _player.OnHealthChanged += DrawHealth;
+            _health.OnHealthChanged += DrawHealth;
         }
     }
 
     private void OnDisable()
     {
-        if (_player != null)
+        if (_health != null)
         {
-            _player.OnMaxHealthChanged -= DrawMaxHealth;
-            _player.OnHealthChanged -= DrawHealth;
+            _health.OnHealthChanged -= DrawHealth;
         }
     }
 
-    public virtual void DrawMaxHealth(int health) { }
-
-    public virtual void DrawHealth(int health) { }
+    public virtual void DrawHealth(int health, int maxHealth) { }
 }

@@ -558,9 +558,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 100
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4fb8921b6160b4c89dd9aba13591b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1041572480}
+  _health: {fileID: 1041572480}
   _slider: {fileID: 263542766}
 --- !u!1 &542859045
 GameObject:
@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 1041572479}
   - component: {fileID: 1041572480}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -982,7 +982,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1041572478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3a377b63e3920b45904fc60609bba77, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f95d5dcc0525094e97e872101d61897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1045141795
@@ -1069,9 +1069,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 100
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d13aa0287f3574ca5d0b183b831b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1041572480}
+  _health: {fileID: 1041572480}
   _slider: {fileID: 1045141798}
 --- !u!1 &1159924462
 GameObject:
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 2004300076}
-  _player: {fileID: 1041572480}
+  _health: {fileID: 1041572480}
 --- !u!4 &1159924464
 Transform:
   m_ObjectHideFlags: 0
@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 117553564}
-  _player: {fileID: 1041572480}
+  _health: {fileID: 1041572480}
 --- !u!4 &1460159597
 Transform:
   m_ObjectHideFlags: 0
@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7601481ce913e324f86e5bac68b72b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1041572480}
+  _health: {fileID: 1041572480}
   _text: {fileID: 1759108883}
 --- !u!1 &2004300074
 GameObject:

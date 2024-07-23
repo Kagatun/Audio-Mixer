@@ -5,14 +5,16 @@ public class HealthBarCutting : HealthBar
 {
     [SerializeField] private Slider _slider;
 
-    public override void DrawMaxHealth(int health)
+    private float _maxValue = 1f;
+
+    private void Start()
     {
-        _slider.maxValue = health;
-        _slider.value = health;
+        _slider.maxValue = _maxValue;
+        _slider.value = _maxValue;
     }
 
-    public override void DrawHealth(int health)
+    public override void DrawHealth(int health, int maxHealth)
     {
-        _slider.value = health;
+        _slider.value = (float)health / maxHealth;
     }
 }

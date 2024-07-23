@@ -7,32 +7,38 @@ public class HealthBarSmooth : HealthBar
     [SerializeField] private Slider _slider;
 
     private Coroutine _coroutineSmoothChange;
-    private float _smoothSpeed = 200f;
+    private float _smoothTime = 0.5f;
+    private float _maxValue = 1f;
 
-    public override void DrawMaxHealth(int health)
+    private void Start()
     {
-        _slider.maxValue = health;
-        _slider.value = health;
+        _slider.maxValue = _maxValue;
+        _slider.value = _maxValue;
     }
 
-    public override void DrawHealth(int health)
+    public override void DrawHealth(int health, int maxHealth)
     {
         if (_coroutineSmoothChange != null)
         {
             StopCoroutine(_coroutineSmoothChange);
         }
 
-        _coroutineSmoothChange = StartCoroutine(SmoothHealthChange(health));
+        float targetValue = (float)health / maxHealth;
+        _coroutineSmoothChange = StartCoroutine(SmoothHealthChange(targetValue));
     }
 
-    private IEnumerator SmoothHealthChange(float targetHealth)
+    private IEnumerator SmoothHealthChange(float targetValue)
     {
-        while (_slider.value != targetHealth)
+        float startValue = _slider.value;
+        float elapsedTime = 0f;
+
+        while (_slider.value != targetValue)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, targetHealth, _smoothSpeed * Time.deltaTime);
+            _slider.value = Mathf.MoveTowards(startValue, targetValue, elapsedTime / _smoothTime);
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        _slider.value = targetHealth;
+        _slider.value = targetValue;
     }
 }

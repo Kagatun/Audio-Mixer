@@ -4,21 +4,28 @@ using UnityEngine.UI;
 public class Attacker : MonoBehaviour
 {
     [SerializeField] private Button _button;
-    [SerializeField] private Player _player;
+    [SerializeField] private Health _health;
+
+    private int _damage = 20;
 
     private void OnEnable()
     {
-        if (_player != null)
+        if (_health != null)
         {
-            _button.onClick.AddListener(_player.TakeDamage);
+            _button.onClick.AddListener(OnButtonClick);
         }
     }
 
     private void OnDisable()
     {
-        if (_player != null)
+        if (_health != null)
         {
-            _button.onClick.RemoveListener(_player.TakeDamage);
+            _button.onClick.RemoveListener(OnButtonClick);
         }
+    }
+
+    private void OnButtonClick()
+    {
+        _health.TakeDamage(_damage);
     }
 }
